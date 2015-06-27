@@ -1,0 +1,10 @@
+*.o
+*.pb.h
+*.pb.cc
+*.project
+*.cproject
+
+patterns
+
+Debug/
+.settings/
