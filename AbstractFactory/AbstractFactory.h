@@ -8,6 +8,8 @@
 #ifndef ABSTRACTFACTORY_ABSTRACTFACTORY_H_
 #define ABSTRACTFACTORY_ABSTRACTFACTORY_H_
 
+namespace NS_ABSTRACT_FACTORY {
+
 class AbstractProductA;
 class AbstractProductB;
 class AbstractFactory {
@@ -25,5 +27,7 @@ public:
 	virtual AbstractProductA *createProductA() = 0;
 	virtual AbstractProductB *createProductB() = 0;
 };
+
+} /* namespace NS_ABSTRACT_FACTORY */
 
 #endif /* ABSTRACTFACTORY_ABSTRACTFACTORY_H_ */

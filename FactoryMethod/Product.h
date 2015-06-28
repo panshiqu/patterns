@@ -12,13 +12,9 @@ namespace NS_FACTORY_METHOD {
 
 class Product {
 public:
-	Product() {
-		// TODO Auto-generated constructor stub
-
-	}
-	virtual ~Product() {
-		// TODO Auto-generated destructor stub
-	}
+	Product() {}
+	virtual ~Product() {}
+	virtual void printSelf(void) = 0;
 };
 
 } /* namespace NS_FACTORY_METHOD */

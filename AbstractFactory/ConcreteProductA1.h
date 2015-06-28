@@ -11,6 +11,8 @@
 #include "AbstractProductA.h"
 #include <iostream>
 
+namespace NS_ABSTRACT_FACTORY {
+
 class ConcreteProductA1 : public AbstractProductA
 {
 public:
@@ -22,5 +24,7 @@ public:
 		std::cout << "I'm ConcreteProductA1." << std::endl;
 	}
 };
+
+} /* namespace NS_ABSTRACT_FACTORY */
 
 #endif /* ABSTRACTFACTORY_CONCRETEPRODUCTA1_H_ */

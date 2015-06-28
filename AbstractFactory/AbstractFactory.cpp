@@ -9,6 +9,8 @@
 #include "ConcreteFactory1.h"
 #include "ConcreteFactory2.h"
 
+namespace NS_ABSTRACT_FACTORY {
+
 AbstractFactory *AbstractFactory::getFactory(int type)
 {
 	if (FACTORY_ONE == type)
@@ -17,4 +19,6 @@ AbstractFactory *AbstractFactory::getFactory(int type)
 		return new ConcreteFactory2();
 	else return 0;
 }
+
+} /* namespace NS_ABSTRACT_FACTORY */
 

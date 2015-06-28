@@ -10,20 +10,24 @@
 
 namespace NS_FACTORY_METHOD {
 
+class Product;
 class Creator {
 public:
 	Creator() {}
 	virtual ~Creator() {}
-	virtual void createProduct(void) = 0;
+	virtual Product *createProduct(void) = 0;
 };
 
 template <class TheProduct>
 class StandardCreator : public Creator {
-	virtual void createProduct(void);
+public:
+	StandardCreator() {}
+	virtual ~StandardCreator() {}
+	virtual Product *createProduct(void);
 };
 
 template <class TheProduct>
-Product *StandardCreator<TheProduct>::CreateProduct(void) {
+Product *StandardCreator<TheProduct>::createProduct(void) {
 	return new TheProduct;
 }
 

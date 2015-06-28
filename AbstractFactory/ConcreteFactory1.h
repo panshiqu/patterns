@@ -10,6 +10,8 @@
 
 #include "AbstractFactory.h"
 
+namespace NS_ABSTRACT_FACTORY {
+
 class ConcreteFactory1 : public AbstractFactory
 {
 public:
@@ -19,5 +21,7 @@ public:
 	virtual AbstractProductA *createProductA();
 	virtual AbstractProductB *createProductB();
 };
+
+} /* namespace NS_ABSTRACT_FACTORY */
 
 #endif /* ABSTRACTFACTORY_CONCRETEFACTORY1_H_ */

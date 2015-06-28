@@ -8,6 +8,8 @@
 #ifndef BUILDER_DIRECTOR_H_
 #define BUILDER_DIRECTOR_H_
 
+namespace NS_BUILDER {
+
 class Builder;
 class Director {
 public:
@@ -18,5 +20,7 @@ public:
 private:
 	Builder *_builder;
 };
+
+} /* namespace NS_BUILDER */
 
 #endif /* BUILDER_DIRECTOR_H_ */

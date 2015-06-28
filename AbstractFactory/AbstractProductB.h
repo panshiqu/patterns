@@ -8,6 +8,8 @@
 #ifndef ABSTRACTFACTORY_ABSTRACTPRODUCTB_H_
 #define ABSTRACTFACTORY_ABSTRACTPRODUCTB_H_
 
+namespace NS_ABSTRACT_FACTORY {
+
 class AbstractProductB {
 public:
 	AbstractProductB() {}
@@ -15,5 +17,7 @@ public:
 
 	virtual void printSelf(void) = 0;
 };
+
+} /* namespace NS_ABSTRACT_FACTORY */
 
 #endif /* ABSTRACTFACTORY_ABSTRACTPRODUCTB_H_ */

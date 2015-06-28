@@ -11,6 +11,8 @@
 #include "Product.h"
 #include "Builder.h"
 
+namespace NS_BUILDER {
+
 class ConcreteBuilderA : public Builder
 {
 public:
@@ -36,5 +38,7 @@ public:
 private:
 	Product *_product;
 };
+
+} /* namespace NS_BUILDER */
 
 #endif /* BUILDER_CONCRETEBUILDERA_H_ */

@@ -10,6 +10,8 @@
 
 #include <iostream>
 
+namespace NS_BUILDER {
+
 class Product {
 public:
 	Product() : _color("none"), _size("none") {}
@@ -27,5 +29,7 @@ private:
 	std::string _color;
 	std::string _size;
 };
+
+} /* namespace NS_BUILDER */
 
 #endif /* BUILDER_PRODUCT_H_ */
