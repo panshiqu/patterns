@@ -5,9 +5,10 @@
  *      Author: root
  */
 
-#define ABSTRACT_FACTORY
+//#define ABSTRACT_FACTORY
 //#define BUILDER
 //#define FACTORY_METHOD
+#define PROTOTYPE
 
 #ifdef ABSTRACT_FACTORY
 #include "AbstractFactory/AbstractFactory.h"
@@ -57,5 +58,31 @@ int main(void)
 	Product *product = ConcreteCreator.createProduct();
 	product->printSelf();
 	delete product;
+}
+#endif
+
+#ifdef PROTOTYPE
+#include "Prototype/ConcretePrototype1.h"
+#include "Prototype/ConcretePrototype2.h"
+using namespace NS_PROTOTYPE;
+int main(void)
+{
+	ConcretePrototype1 *p1 = new ConcretePrototype1();
+	ConcretePrototype2 *p2 = new ConcretePrototype2();
+	p1->setIndex(10);
+	p2->setIndex("ten");
+
+	Prototype *cp1 = p1->clone();
+	Prototype *cp2 = p2->clone();
+
+	p1->printSelf();
+	p2->printSelf();
+	cp1->printSelf();
+	cp2->printSelf();
+
+	delete p1;
+	delete p2;
+	delete cp1;
+	delete cp2;
 }
 #endif
