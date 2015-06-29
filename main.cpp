@@ -8,7 +8,8 @@
 //#define ABSTRACT_FACTORY
 //#define BUILDER
 //#define FACTORY_METHOD
-#define PROTOTYPE
+//#define PROTOTYPE
+#define SINGLETON
 
 #ifdef ABSTRACT_FACTORY
 #include "AbstractFactory/AbstractFactory.h"
@@ -84,5 +85,14 @@ int main(void)
 	delete p2;
 	delete cp1;
 	delete cp2;
+}
+#endif
+
+#ifdef SINGLETON
+#include "Singleton/Singleton.h"
+using namespace NS_SINGLETON;
+int main(void)
+{
+	Singleton::getInstance()->Print();
 }
 #endif
