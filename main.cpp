@@ -9,7 +9,9 @@
 //#define BUILDER
 //#define FACTORY_METHOD
 //#define PROTOTYPE
-#define SINGLETON
+//#define SINGLETON
+//#define ADAPTER
+#define BRIDGE
 
 #ifdef ABSTRACT_FACTORY
 #include "AbstractFactory/AbstractFactory.h"
@@ -94,5 +96,37 @@ using namespace NS_SINGLETON;
 int main(void)
 {
 	Singleton::getInstance()->Print();
+}
+#endif
+
+#ifdef ADAPTER
+#include "Adapter/AdapterA.h"
+#include "Adapter/AdapterB.h"
+using namespace NS_ADAPTER;
+int main(void)
+{
+	// 类适配器
+	AdapterA aa;
+	aa.Request();
+
+	// 对象适配器
+	Adaptee ada;
+	AdapterB ab(&ada);
+	ab.Request();
+}
+#endif
+
+#ifdef BRIDGE
+#include "Bridge/Abstraction.h"
+#include "Bridge/ConcreteImplementorA.h"
+#include "Bridge/ConcreteImplementorB.h"
+using namespace NS_BRIDGE;
+int main(void)
+{
+	// 可以使用Abstract Factory创建实现
+	// 如此以来这段代码将不依赖或需要知道任何实现
+	ConcreteImplementorA ia;
+	Abstraction abs(&ia);
+	abs.operation();
 }
 #endif
