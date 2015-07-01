@@ -11,7 +11,11 @@
 //#define PROTOTYPE
 //#define SINGLETON
 //#define ADAPTER
-#define BRIDGE
+//#define BRIDGE
+//#define COMPOSITE
+//#define DECORATOR
+//#define FACADE
+#define FLYWEIGHT
 
 #ifdef ABSTRACT_FACTORY
 #include "AbstractFactory/AbstractFactory.h"
@@ -128,5 +132,71 @@ int main(void)
 	ConcreteImplementorA ia;
 	Abstraction abs(&ia);
 	abs.operation();
+}
+#endif
+
+#ifdef COMPOSITE
+#include "Composite/Composite.h"
+#include "Composite/Leaf.h"
+using namespace NS_COMPOSITE;
+int main(void)
+{
+	Composite c1("c1");
+	Leaf l1("l1");
+	Composite c2("c2");
+	c1.add(&l1);
+	c1.add(&c2);
+	Leaf l2("l2");
+	c2.add(&l2);
+	c1.operation();
+}
+#endif
+
+#ifdef DECORATOR
+#include "Decorator/ConcreteComponent.h"
+#include "Decorator/ConcreteDecoratorA.h"
+#include "Decorator/ConcreteDecoratorB.h"
+using namespace NS_DECORATOR;
+using namespace std;
+int main(void)
+{
+	ConcreteComponent cc;
+	cc.operation();
+
+	cout << "----------" << endl;
+
+	ConcreteDecoratorA cda(&cc);
+	cda.operation();
+
+	cout << "----------" << endl;
+
+	ConcreteDecoratorB cdb(&cda);
+	cdb.operation();
+}
+#endif
+
+#ifdef FACADE
+#include "Facade/Facade.h"
+using namespace NS_FACADE;
+int main(void)
+{
+	Facade facade;
+	facade.inputAndOutput();
+}
+#endif
+
+#ifdef FLYWEIGHT
+#include "Flyweight/FlyweightFactory.h"
+#include "Flyweight/UnsharedConcreteFlyweight.h"
+using namespace NS_FLYWEIGHT;
+int main(void)
+{
+	FlyweightFactory ff;
+	UnsharedConcreteFlyweight ucf;
+	Flyweight *f1 = ff.getFlyweight(1);
+	ucf.add(f1, "red");
+	Flyweight *f2 = ff.getFlyweight(1);
+	ucf.add(f2, "black");
+	ucf.operation();
 }
 #endif
