@@ -15,7 +15,11 @@
 //#define COMPOSITE
 //#define DECORATOR
 //#define FACADE
-#define FLYWEIGHT
+//#define FLYWEIGHT
+//#define PROXY
+//#define CHAINOFRESPONSIBILITY
+//#define COMMAND
+#define INTERPRETER
 
 #ifdef ABSTRACT_FACTORY
 #include "AbstractFactory/AbstractFactory.h"
@@ -198,5 +202,57 @@ int main(void)
 	Flyweight *f2 = ff.getFlyweight(1);
 	ucf.add(f2, "black");
 	ucf.operation();
+}
+#endif
+
+#ifdef PROXY
+#include "Proxy/Proxy.h"
+using namespace NS_PROXY;
+int main(void)
+{
+	Proxy p;
+	p.Request();
+}
+#endif
+
+#ifdef CHAINOFRESPONSIBILITY
+#include "ChainOfResponsibility/ConcreteHandle1.h"
+#include "ChainOfResponsibility/ConcreteHandle2.h"
+using namespace NS_CHAINOFRESPONSIBILITY;
+int main(void)
+{
+	ConcreteHandle1 ch1(0);
+	ConcreteHandle2 ch2(&ch1);
+	ch2.HandleRequest(100);
+	ch2.HandleRequest(0);
+}
+#endif
+
+#ifdef COMMAND
+#include "Command/Command.h"
+#include "Command/Receiver.h"
+#include "Command/ConcreteCommand.h"
+using namespace NS_COMMAND;
+int main(void)
+{
+	Receiver r;
+	ConcreteCommand cc(&r);
+	cc.execute();
+
+	// 使用模板创建简单命令
+	SimpleCommand<Receiver> sc(&r, &Receiver::action);
+	sc.execute();
+}
+#endif
+
+#ifdef INTERPRETER
+#include <iostream>
+#include "Interpreter/ConcreteExpression.h"
+using namespace NS_INTERPRETER;
+using namespace std;
+int main(void)
+{
+	ConcreteExpression ce;
+	std::cout << ce.interpret(false) << std::endl;
 }
 #endif
