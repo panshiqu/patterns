@@ -14,12 +14,15 @@
 //#define BRIDGE
 //#define COMPOSITE
 //#define DECORATOR
-#define FACADE
+//#define FACADE
 //#define FLYWEIGHT
 //#define PROXY
 //#define CHAINOFRESPONSIBILITY
 //#define COMMAND
 //#define INTERPRETER
+//#define ITERATOR
+//#define MEDIATOR
+#define MEMENTO
 
 #ifdef ABSTRACT_FACTORY
 #include "AbstractFactory/AbstractFactory.h"
@@ -254,5 +257,52 @@ int main(void)
 {
 	ConcreteExpression ce;
 	std::cout << ce.interpret(false) << std::endl;
+}
+#endif
+
+#ifdef ITERATOR
+#include <iostream>
+#include "Iterator/List.h"
+#include "Iterator/ListIterator.h"
+#include "Iterator/IteratorPtr.h"
+using namespace NS_ITERATOR;
+int main(void)
+{
+	List<int> lt;
+	IteratorPtr<int> li(lt.createIterator());
+	for (li->first(); !li->isDone(); li->next())
+		std::cout << li->currentItem() << std::endl;
+}
+#endif
+
+#ifdef MEDIATOR
+#include "Mediator/ConcreteMediator.h"
+using namespace NS_MEDIATOR;
+int main(void)
+{
+	/*
+	 * 这个设计模式估计大家都经常用，设想一下，我有若干个类A，B，C，D，我想组合它们实现实现不同的功能
+	 * 譬如ABC实现功能，BCD又实现另外一个功能等等，我把这些实现用类封装起来，它就算是一个中介者了
+	 * 为什么要有Colleague及Mediator基类，你直接看书中的场景，很好理解
+	 */
+	ConcreteMediator cm;
+	cm.doSomething();
+}
+#endif
+
+#ifdef MEMENTO
+#include <iostream>
+#include "Memento/Memento.h"
+#include "Memento/Originator.h"
+using namespace NS_MEMENTO;
+using namespace std;
+int main(void)
+{
+	Originator o;
+	Memento *m = o.createMemento();
+	o.setState(true);
+	o.setMemento(m);
+	delete m;
+	std::cout << o.getState() << std::endl;
 }
 #endif
