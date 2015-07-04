@@ -14,12 +14,12 @@
 //#define BRIDGE
 //#define COMPOSITE
 //#define DECORATOR
-//#define FACADE
+#define FACADE
 //#define FLYWEIGHT
 //#define PROXY
 //#define CHAINOFRESPONSIBILITY
 //#define COMMAND
-#define INTERPRETER
+//#define INTERPRETER
 
 #ifdef ABSTRACT_FACTORY
 #include "AbstractFactory/AbstractFactory.h"
