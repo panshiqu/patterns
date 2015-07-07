@@ -15,7 +15,8 @@
 
 namespace NS_ADAPTER {
 
-class AdapterB {
+class AdapterB : public Target
+{
 public:
 	AdapterB(Adaptee *adaptee) : _adaptee(adaptee) {}
 	virtual ~AdapterB() {}

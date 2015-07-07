@@ -10,7 +10,7 @@
 //#define FACTORY_METHOD
 //#define PROTOTYPE
 //#define SINGLETON
-//#define ADAPTER
+#define ADAPTER
 //#define BRIDGE
 //#define COMPOSITE
 //#define DECORATOR
@@ -27,7 +27,7 @@
 //#define STATE
 //#define STRATEGY
 //#define TEMPLATEMETHOD
-#define VISITOR
+//#define VISITOR
 
 #ifdef ABSTRACT_FACTORY
 #include "AbstractFactory/AbstractFactory.h"
