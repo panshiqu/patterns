@@ -22,7 +22,12 @@
 //#define INTERPRETER
 //#define ITERATOR
 //#define MEDIATOR
-#define MEMENTO
+//#define MEMENTO
+//#define OBSERVER
+//#define STATE
+//#define STRATEGY
+//#define TEMPLATEMETHOD
+#define VISITOR
 
 #ifdef ABSTRACT_FACTORY
 #include "AbstractFactory/AbstractFactory.h"
@@ -304,5 +309,92 @@ int main(void)
 	o.setMemento(m);
 	delete m;
 	std::cout << o.getState() << std::endl;
+}
+#endif
+
+#ifdef OBSERVER
+#include "Observer/ConcreteSubject.h"
+#include "Observer/ConcreteObserver.h"
+using namespace NS_OBSERVER;
+int main(void)
+{
+	// 简单的拉模型：Observer仅接受通知，然后主动向Subject要状态
+	// 若是推模型，则要扩展Update接口了
+	ConcreteSubject cs;
+	ConcreteObserver co1(&cs);
+	ConcreteObserver co2(&cs);
+	cs.notify();
+}
+#endif
+
+#ifdef STATE
+#include "State/Context.h"
+#include "State/ConcreteStateA.h"
+#include "State/ConcreteStateB.h"
+using namespace NS_STATE;
+int main(void)
+{
+	ConcreteStateA csa;
+	Context c(&csa);
+	c.request();
+	c.request();
+}
+#endif
+
+#ifdef STRATEGY
+#include "Strategy/Context.h"
+#include "Strategy/ConcreteStrategyA.h"
+#include "Strategy/ConcreteStrategyB.h"
+using namespace NS_STRATEGY;
+int main(void)
+{
+	Context c;
+	ConcreteStrategyA csa;
+	ConcreteStrategyB csb;
+	c.setStrategy(&csa);
+	c.contextInterface();
+	c.setStrategy(&csb);
+	c.contextInterface();
+}
+#endif
+
+#ifdef TEMPLATEMETHOD
+#include "TemplateMethod/ConcreteClass.h"
+using namespace NS_TEMPLATEMETHOD;
+int main(void)
+{
+	ConcreteClass cc;
+	cc.templateMethod();
+}
+#endif
+
+#ifdef VISITOR
+#include <list>
+#include <iostream>
+#include "Visitor/ConcreteVisitor1.h"
+#include "Visitor/ConcreteVisitor2.h"
+#include "Visitor/ConcreteElementA.h"
+#include "Visitor/ConcreteElementB.h"
+using namespace NS_VISITOR;
+using namespace std;
+int main(void)
+{
+	list<Element *> elements;
+	ConcreteElementA cea(Element::COMMON, 100);
+	elements.push_back(&cea);
+	ConcreteElementB ceb(Element::SPECIAL, 100);
+	elements.push_back(&ceb);
+
+	ConcreteVisitor1 cv1;
+	list<Element *>::iterator itr1 = elements.begin();
+	for (; itr1 != elements.end(); itr1++)
+		(*itr1)->accept(&cv1);
+	std::cout << "Special: " << cv1.getTotal() << std::endl;
+
+	ConcreteVisitor2 cv2;
+	list<Element *>::iterator itr2 = elements.begin();
+	for (; itr2 != elements.end(); itr2++)
+		(*itr2)->accept(&cv2);
+	std::cout << "All: " << cv2.getTotal() << std::endl;
 }
 #endif
