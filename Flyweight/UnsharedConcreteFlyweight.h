@@ -13,17 +13,21 @@
 
 namespace NS_FLYWEIGHT {
 
-class UnsharedConcreteFlyweight {
+class UnsharedConcreteFlyweight : public Flyweight
+{
 public:
 	UnsharedConcreteFlyweight() {}
 	virtual ~UnsharedConcreteFlyweight() {}
-	virtual void operation(void)
+	virtual void operation(std::string extrinsicState)
 	{
 		std::multimap<Flyweight *, std::string>::iterator itr = _flyweights.begin();
-		for (; itr != _flyweights.end(); itr++)
-		{
-			itr->first->operation(itr->second);
-		}
+			for (; itr != _flyweights.end(); itr++)
+			{
+				std::string str = itr->second;
+				if (str == "") str = extrinsicState;
+
+				itr->first->operation(str);
+			}
 	}
 	virtual void add(Flyweight *flyweight, std::string extrinsicState)
 	{

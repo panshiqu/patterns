@@ -10,12 +10,12 @@
 //#define FACTORY_METHOD
 //#define PROTOTYPE
 //#define SINGLETON
-#define ADAPTER
+//#define ADAPTER
 //#define BRIDGE
 //#define COMPOSITE
 //#define DECORATOR
 //#define FACADE
-//#define FLYWEIGHT
+#define FLYWEIGHT
 //#define PROXY
 //#define CHAINOFRESPONSIBILITY
 //#define COMMAND
@@ -206,10 +206,10 @@ int main(void)
 	FlyweightFactory ff;
 	UnsharedConcreteFlyweight ucf;
 	Flyweight *f1 = ff.getFlyweight(1);
-	ucf.add(f1, "red");
+	ucf.add(f1, "");
 	Flyweight *f2 = ff.getFlyweight(1);
 	ucf.add(f2, "black");
-	ucf.operation();
+	ucf.operation("red");
 }
 #endif
 
